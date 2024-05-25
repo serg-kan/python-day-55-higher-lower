@@ -6,7 +6,16 @@ app = Flask(__name__)
 my_number = random.randint(1, 9)
 print(my_number)
 
+
+def center(func):
+    def wrapper():
+        return f"<div style='text-align: center'>{func()}</div>"
+
+    return wrapper
+
+
 @app.route("/")
+@center
 def hello_world():
     return "<h1>Guess a number between 1 and 9</h1>" \
            "<img src='https://media.giphy.com/media/3o7aCSPqXE5C6T8tBC/giphy.gif' />"
